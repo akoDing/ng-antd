@@ -1,0 +1,9 @@
+{
+  "/basedemodev/appbiz/*": {
+    "target": "http://172.24.141.73:9080/psbuat",
+    "secure": false,
+    "pathRewrite": {
+      "/basedemodev/appbiz": ""
+    }
+  }
+}

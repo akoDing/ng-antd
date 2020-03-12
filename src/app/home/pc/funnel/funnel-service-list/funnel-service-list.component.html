@@ -1,0 +1,77 @@
+<nz-card nzTitle="服务选择">
+  <ng-container *ngFor="let item of value">
+    <div nz-row [nzGutter]="16">
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label nzRequired>{{ 'frontend.funnel.opportunityNo' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="item"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel.solution' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="item"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel.customerName' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="item"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="16">
+      <nz-form-item>
+        <nz-form-label nzRequired>{{ 'frontend.funnel.opportunityNo' | translate }}</nz-form-label>
+        <nz-form-control>
+          <input nz-input [(ngModel)]="item"/>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <nz-divider nzText="价格" nzOrientation="left"></nz-divider>
+
+    <div nz-row [nzGutter]="16">
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label nzRequired>{{ 'frontend.funnel.opportunityNo' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="item"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel.solution' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="item"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel.customerName' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input nz-input [(ngModel)]="item"/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="16">
+      <nz-form-item>
+        <nz-form-label nzRequired>{{ 'frontend.funnel.opportunityNo' | translate }}</nz-form-label>
+        <nz-form-control>
+          <input nz-input [(ngModel)]="item"/>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </ng-container>
+  <button nz-button [nzSize]="'large'" nzType="dashed">Dashed</button>
+</nz-card>
+

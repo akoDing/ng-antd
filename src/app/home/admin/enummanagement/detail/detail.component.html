@@ -1,0 +1,72 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm($event, validateForm.value)">
+    <div nz-row nzType="flex" nzJustify="space_between">
+        <div nz-col nzSpan="12">
+            <nz-form-item [nzGutter]="8">
+                <nz-form-label [nzSpan]="6" nzRequired>{{'frontend.thName' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12" nzErrorTip="{{'frontend.requiredText' | translate}}">
+                    <nz-input-group [nzAddOnBefore]="namePrefix" >
+                        <input type="text" nz-input formControlName="nameSuffix" />
+                    </nz-input-group>
+                    <!-- <nz-input-group nzCompact>
+                        <input type="text" nz-input formControlName="namePrefix" style="width: 50%;text-align: right;" />
+                        <input type="text" nz-input formControlName="nameSuffix" style="width:50%;" />
+                    </nz-input-group> -->
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="space_between">
+        <div nz-col nzSpan="12">
+            <nz-form-item [nzGutter]="8">
+                <nz-form-label [nzSpan]="6" nzRequired>{{'frontend.chineseDisplay' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                    <input nz-input formControlName="i18nChinese" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+            <nz-form-item [nzGutter]="8">
+                <nz-form-label [nzSpan]="6" nzRequired>{{'frontend.englishDisplay' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                    <input nz-input formControlName="i18nEnglish" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="space_between">
+        <div nz-col nzSpan="12">
+            <nz-form-item [nzGutter]="8">
+                <nz-form-label [nzSpan]="6">{{'frontend.thOrderIndex' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                    <input nz-input type="number" min="0" formControlName="indexof" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+            <nz-form-item [nzGutter]="8">
+                <nz-form-label [nzSpan]="6">{{'frontend.thEnumDisplay' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                    <input nz-input formControlName="display" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <!-- <div nz-col nzSpan="12">
+            <nz-form-item [nzGutter]="8">
+                <nz-form-label [nzSpan]="6">{{'frontend.thActive' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                    <nz-switch formControlName="active" nzCheckedChildren="1" nzUnCheckedChildren="0"></nz-switch>
+                </nz-form-control>
+            </nz-form-item>
+        </div> -->
+    </div>
+    <div nz-row style="text-align: center;margin-top: 18px;">
+        <nz-form-item>
+            <nz-form-control>
+                <button nz-button nzType="primary"
+                    [disabled]="!validateForm.valid">{{'frontend.save' | translate}}</button>
+                <button nz-button style="margin-left: 12px;"
+                    (click)="closeTabWithoutSave($event)">{{'frontend.back' | translate}}</button>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+</form>

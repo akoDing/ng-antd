@@ -1,0 +1,48 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+  <div nz-form-item nz-row [nzGutter]="16">
+    <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+      <button nz-button [nzLoading]="_operatingFlag" style=" margin-left:16px;" [nzType]="'primary'" (click)="create()">{{'frontend.create' | translate}}</button>
+    </div>
+  </div>
+</div>
+
+<nz-table #simpleTable 
+  [nzData]="dataList" 
+  [nzShowPagination]="true" 
+  [nzLoading]="_operatingFlag" 
+  [nzPageSize]="pageSize"
+  [(nzPageIndex)] = "pageIndex"
+  [nzShowTotal]="totalTemplate"
+  nzSize="small"
+  style="margin-top: 20px">
+  <thead>
+    <tr>
+      <th nzWidth="60%">{{'frontend.thApprovalComment' | translate}}</th>
+      <th nzWidth="10%">{{'frontend.thOrderIndex' | translate}}</th>
+      <th nzWidth="10%">{{'frontend.thActive' | translate}}</th>
+      <th nzWidth="20%">{{'frontend.thAction' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of simpleTable.data">
+      <tr>
+        <td>{{ 'backend.'+item.name | translate }}</td>
+        <td>{{ item.orderIndex }}</td>
+        <td>
+          <span><nz-switch [ngModel]="item.active" [nzDisabled]="true" [nzSize]="'small'" [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+          </span>
+        </td>
+        <td>
+          <a nz-icon type="edit" title="{{'frontend.edit' | translate}}" (click)="edit(item)"></a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a nz-icon type="swap" title="{{'frontend.toggleActive' | translate}}" (click)="toggle(item)"></a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a nz-icon type="delete" title="{{'frontend.delete' | translate}}" nz-popconfirm nzTitle="{{'frontend.confirmDelete' | translate}}" (nzOnConfirm)="delete(item)"></a>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>
+<ng-template #totalTemplate let-total> {{'frontend.total' | translate}}:&nbsp;&nbsp;{{ total }}</ng-template>

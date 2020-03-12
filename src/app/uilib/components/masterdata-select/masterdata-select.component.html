@@ -1,0 +1,14 @@
+<nz-select style="width:100%" nzAllowClear="true" nzShowSearch="true"
+    [nzServerSearch]="true" 
+    (nzOnSearch)="onSearch($event)"  
+    [(ngModel)]="selectedOption" 
+    [nzDisabled]="disabled"
+    (ngModelChange)="modelChange($event)"
+    nzPlaceHolder="{{'frontend.pleasechoose' | translate}}">
+    <ng-container *ngFor="let o of masterdataList">
+        <nz-option *ngIf="!loading" [nzValue]="o.valueStr" [nzLabel]="o.labelStr"></nz-option>
+    </ng-container>
+    <nz-option *ngIf="loading" nzDisabled nzCustomContent>
+        <i nz-icon nzType="loading" class="loading-icon"></i>{{'frontend.loading' | translate}}
+    </nz-option>
+</nz-select>

@@ -1,0 +1,12 @@
+<!-- <div *ngIf="requestName == 'nsi'">
+  <nsi-main-form></nsi-main-form>
+</div> -->
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template let-nsi="nsi" #nsiMainForm>
+  <nsi-main-form></nsi-main-form>
+</ng-template>
+  <!-- <app-cost-center-table [reload]="reload" (onEdit)="edit($event)" (onCreate)="create()"></app-cost-center-table> -->
+<!-- <ng-template let-nsi="costCenter" #detail>
+  <app-cost-center-detail [costCenter]="costCenter" (afterSave)="closeTabAndReload(index, $event)">
+  </app-cost-center-detail>
+</ng-template> -->

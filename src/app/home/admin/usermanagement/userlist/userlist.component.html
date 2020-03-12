@@ -1,0 +1,29 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+  <form [formGroup]="searchForm" nz-form>
+    <div [nzGutter]="16" nz-form-item nz-row>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <input formControlName="username" nz-input
+               placeholder="{{'frontend.user.username' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col>
+        <input formControlName="lastname" nz-input
+               placeholder="{{'frontend.user.lastname' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col>
+        <input formControlName="mail" nz-input
+               placeholder="{{'frontend.user.mail' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col>
+        <input formControlName="phoneNumber"
+               nz-input placeholder="{{'frontend.user.phoneNumber' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <button (click)="onSearch($event)" [nzLoading]="userTableInfo.loading" [nzType]="'primary'"
+                nz-button>{{'frontend.search' | translate}}</button>
+        <button (click)="onReset($event)" [nzType]="'primary'" nz-button
+                style=" margin-left:16px;">{{'frontend.reset' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+<app-list-table [tableInfo]="userTableInfo" (pageChange)="onChangePage"></app-list-table>

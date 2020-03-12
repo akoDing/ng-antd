@@ -1,0 +1,52 @@
+<nz-card nzTitle="基本信息">
+
+  <div nz-row>
+    <div [nzSpan]="24" nz-col>
+      <form (ngSubmit)="submitForm($event)" [formGroup]="validateForm" nz-form>
+        <div nz-row nzJustify="space_between" nzType="flex" style="margin-bottom: 20px">
+          <div [nzSpan]="12" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7" nzRequired>标识</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <input formControlName="name" nz-input/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="12" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">名称</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <input formControlName="displayName" nz-input/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <nz-card nzType="inner" nzTitle="关联用户">
+          <div style="margin-bottom:16px;" nz-row nzGutter="16">
+            <div nz-col [nzSpan]="18">
+              <sys-user-select-multi [_value]="defaultUserList" (selectUser)="selectUser($event)"></sys-user-select-multi>
+            </div>
+            <div nz-col [nzSpan]="6">
+              <button nz-button [nzType]="'primary'"
+                      (click)="addUser($event)">{{'frontend.add' | translate}}</button>
+            </div>
+          </div>
+          <app-list-table [tableInfo]="selectUserTableConfig"></app-list-table>
+        </nz-card>
+
+
+        <div nz-row style="text-align: center;margin-top: 18px;">
+          <nz-form-item>
+            <nz-form-control>
+              <button [disabled]="!validateForm.valid" nz-button
+                      nzType="primary">{{'frontend.save' | translate}}</button>
+              <button (click)="closeTabWithoutSave($event)" nz-button
+                      style="margin-left: 12px;">{{'frontend.back' | translate}}</button>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </form>
+    </div>
+  </div>
+</nz-card>
+

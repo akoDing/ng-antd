@@ -1,0 +1,40 @@
+<div>
+  <ul (nzClick)="onItemClick($event)" [nzInlineCollapsed]="setting.layout.sideCollapsed" [nzMode]="'inline'"
+      class="app-side-menu"
+      nz-menu>
+    <li nz-menu-item>
+      <a routerLink="{{device+'/index'}}">
+                <span title>
+                    <i nz-icon theme="outline" type="home"></i>
+                    <span class="nav-text">{{'frontend.MenuHome' | translate}}</span>
+                </span>
+      </a>
+    </li>
+    <ng-container *ngFor="let data of menuData">
+      <ng-container *ngIf="!data.children || data.children.length == 0">
+        <li nz-menu-item>
+          <a routerLink="{{device + data.path}}">
+            <span title>
+              <i [type]="getIconType(data.icon)" nz-icon></i>
+              <span class="nav-text">{{'backend.' + data.name  | translate}}</span>
+            </span>
+          </a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="!!data.children && data.children.length > 0">
+        <li (nzOpenChange)="closeOtherMenu(data)" [nzOpen]="data.expanded" nz-submenu>
+          <span title>
+          <i [type]="getIconType(data.icon)" nz-icon></i>
+          <span class="nav-text">{{'backend.' + data.name | translate}}</span>
+        </span>
+          <ul>
+            <li *ngFor="let menuItem of data.children" [(nzSelected)]="menuItem.selected" class="submenu-item"
+                nz-menu-item>
+              <a routerLink="{{device + data.path + menuItem.path}}">{{'backend.' + menuItem.name | translate}}</a>
+            </li>
+          </ul>
+        </li>
+      </ng-container>
+    </ng-container>
+  </ul>
+</div>

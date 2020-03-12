@@ -1,0 +1,111 @@
+/* You can add global styles to this file, and also import other style files */
+// @import './ng-zorro-theme.less';
+// @import './ng-zorro-mobile-theme.less';
+
+@import './app.custom.less';
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+ul, ol {
+    list-style: none;
+}
+input[disabled], input:disabled {
+    cursor: not-allowed;
+    background-color: #f7f7f7;
+}
+body {
+    background-color: #fff;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.text-right {
+    text-align: right !important;
+}
+.row-margin-top {
+    margin-top: 10px !important;
+}
+.row-margin-bottom {
+    margin-bottom: 10px !important;
+}
+.cell-margin-left {
+    margin-left: 5px !important;
+}
+.cell-margin-right {
+    margin-right: 5px !important;
+}
+.cell-margin-bottom {
+    margin-bottom: 5px !important;
+}
+.button-row {
+    padding: 10px 0;
+}
+.alert-text {
+    color: @primary-color;
+}
+.error-text {
+    color: @error-color;
+}
+.ant-form-item {
+    margin-bottom: 0;
+}
+.action-button {
+    font-size: 18px;
+}
+.view-mobile {
+    display: none !important;
+}
+.view-pc {
+    display: block !important;
+}
+
+.ant-table-bordered .ant-table-thead > tr > th, .ant-table-bordered .ant-table-tbody > tr > td,
+.ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+    padding: 10px;
+}
+.ant-radio-disabled .ant-radio-inner:after {
+    background-color: rgba(0, 0, 0, 0.65);  
+}
+.ant-radio-disabled + span, .ant-select-disabled, .ant-checkbox-disabled + span, .ant-input-disabled {
+    color: rgba(0, 0, 0, 0.65);
+}
+.ant-select-dropdown.ant-select-dropdown-placement-topLeft {
+    transform: scaleY(1) !important;
+}
+.ant-collapse-item-active .ant-collapse-content-active {
+    display: block !important;
+}
+
+@media (max-width: @screen-md) {
+
+    .ant-menu-submenu-placement-rightTop, .ant-calendar-input-wrap, .ant-calendar-footer {
+        display: none;
+    }
+    .ant-modal {
+        top: 60px;
+    }
+    .ant-modal-body {
+        padding: 12px;
+    }
+    .ant-pagination-item, .ant-pagination-prev, .ant-pagination-next {
+        min-width: 28px;
+        height: 28px;
+        line-height: 28px;
+    }
+    .view-pc {
+        display: none !important;
+    }
+    .view-mobile {
+        display: block !important;
+    }
+}
+
+// below is cutomer style
+.custom-form-item {
+  margin-bottom: 16px;
+}

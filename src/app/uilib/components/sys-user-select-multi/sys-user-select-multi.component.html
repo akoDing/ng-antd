@@ -1,0 +1,16 @@
+<nz-select style="width:100%" nzAllowClear="true" nzShowSearch="true"
+    [nzServerSearch]="true" 
+    (nzOnSearch)="onSearch($event)"  
+    [(ngModel)]="selectedOption" 
+    [nzDisabled]="disabled"
+    [nzAutoClearSearchValue]="false"
+    nzMode="multiple"
+    (ngModelChange)="modelChange($event)"
+    nzPlaceHolder="{{'frontend.pleasechoose' | translate}}">
+    <ng-container *ngFor="let o of userList">
+        <nz-option *ngIf="!loading" [nzValue]="o[key]" [nzLabel]="o.lastname + ' (' + o.mail + ')'"></nz-option>
+    </ng-container>
+    <nz-option *ngIf="loading" nzDisabled nzCustomContent>
+        <i nz-icon nzType="loading" class="loading-icon"></i>{{'frontend.loading' | translate}}
+    </nz-option>
+</nz-select>

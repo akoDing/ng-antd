@@ -1,0 +1,8 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template #table>
+    <app-approval-config-table [reload]="reload" (onEdit)="edit($event)" (onCreate)="create()"></app-approval-config-table>
+</ng-template>
+<ng-template let-approvalConfig="approvalConfig" #detail>
+    <app-approval-config-detail [approvalConfig]="approvalConfig" (afterSave)="closeTabAndReload(index, $event)">
+    </app-approval-config-detail>
+</ng-template>

@@ -1,0 +1,7 @@
+<app-tab-router (onCloseTab)="closeTab($event)" [index]="index" [tabs]="tabs"></app-tab-router>
+<ng-template #exchangerateList>
+  <app-exchangeratelist [reload]="reload" (onCreate)="create()" (onEdit)="edit($event)" (onView)="view($event)" (onDisable)="disable($event)"></app-exchangeratelist>
+</ng-template>
+<ng-template #exchangerateDetail let-exchangerate="exchangerate" let-readonly="readonly">
+  <app-exchangeratedetail [exchangerate]="exchangerate" [readonly]="readonly" (afterSave)="closeTabAndReload(index, $event)"></app-exchangeratedetail>
+</ng-template>

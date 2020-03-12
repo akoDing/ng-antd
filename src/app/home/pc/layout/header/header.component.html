@@ -1,0 +1,36 @@
+<div class="app-header" [class.header-side-collapsed]="setting.layout.sideCollapsed">
+    <div class="app-logo-wrapper">
+        <div class="app-logo app-top-nav">
+            <div class="app-logo-image"><img src="./assets/img/logo.png"></div>
+            <ng-container>
+                <div class="app-top-nav-item app-top-nav-item-pc" (click)="toggleCollapsedSideabar()">
+                    <!-- <i class="anticon trigger anticon-menu-{{setting.layout.sideCollapsed ? 'unfold' : 'fold'}}"></i> -->
+                    <i nz-icon type="menu-{{setting.layout.sideCollapsed ? 'unfold' : 'fold'}}" theme="outline"></i>
+                </div>
+                <div class="app-top-nav-item app-top-nav-item-m" (click)="toggleCollapsedHeaderMenu()">
+                    <!-- <i class="anticon trigger anticon-{{setting.layout.headerCollapsed ? 'down' : 'up'}}-circle-o"></i> -->
+                    <i nz-icon type="{{setting.layout.headerCollapsed ? 'down' : 'up'}}-circle" theme="outline"></i>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="app-top-nav-wrap">
+        <ul class="app-top-nav">
+            <li>
+                <a class="view-pc">
+                    <span class="app-top-nav-title">{{'frontend.HomeTitle' | translate}}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="app-top-nav">
+            <li>
+                <div class="app-top-nav-item app-top-nav-item-all">
+                    <header-user></header-user>
+                </div>
+
+                <header-language style="margin-left:15px"></header-language>
+            </li>
+        </ul>
+    </div>
+</div>

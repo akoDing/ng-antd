@@ -1,0 +1,73 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+    <!-- <form nz-form [formGroup]="searchForm">
+        <div nz-form-item nz-row [nzGutter]="16">
+            <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+                <input formControlName="costCenterName" nz-input placeholder="{{'frontend.thName' | translate}}"
+                    #filterInputs attr.filtername="costCenterName">
+            </div>
+            <div nz-col [nzSm]="4" [nzXs]="24">
+                <input formControlName="costOwner" nz-input placeholder="{{'frontend.thOwner' | translate}}"
+                    #filterInputs attr.filtername="costOwner">
+            </div>
+            <div nz-col [nzSm]="4" [nzXs]="24">
+                <input formControlName="costOwnerEmail" nz-input placeholder="{{'frontend.thOwnerEmail' | translate}}"
+                    #filterInputs attr.filtername="costOwnerEmail">
+            </div>
+            <div nz-col [nzSm]="4" [nzXs]="24">
+                <input formControlName="controller" nz-input placeholder="{{'frontend.thController' | translate}}"
+                    #filterInputs attr.filtername="controller">
+            </div>
+            <div nz-col [nzSm]="4" [nzXs]="24">
+                <input formControlName="controllerEmail" nz-input
+                    placeholder="{{'frontend.thControllerEmail' | translate}}" #filterInputs
+                    attr.filtername="controllerEmail">
+            </div>
+            <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+                <button nz-button [nzType]="'primary'" (click)="doSearch($event)"
+                    [nzLoading]="_operatingFlag">{{'frontend.search' | translate}}</button>
+                <button nz-button style=" margin-left:16px;" [nzType]="'primary'"
+                    (click)="doReset($event)">{{'frontend.reset' | translate}}</button>
+            </div>
+        </div>
+    </form> -->
+    <div nz-row>
+        <button nz-button style=" margin-top:16px;" [nzType]="'primary'"
+            (click)="create($event)">{{'frontend.create' | translate}}</button>
+    </div>
+</div>
+
+<nz-table #simpleTable [nzData]="dataList" [nzFrontPagination]="true" [nzShowPagination]="true"
+    [nzLoading]="_operatingFlag" [nzSize]="'small'" [nzPageSize]="pageSize" [(nzPageIndex)]="pageIndex"
+    [nzShowTotal]="totalTemplate" style="margin-top: 20px;">
+    <thead>
+        <tr>
+            <th nzWidth="70%">{{'frontend.thTitle' | translate}}</th>
+            <th nzWidth="10%">{{'frontend.thActive' | translate}}</th>
+            <th nzWidth="20%">{{'frontend.thAction' | translate}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let item of simpleTable.data">
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>
+                    <span>
+                        <nz-switch [ngModel]="item.active" [nzDisabled]="true" [nzSize]="'small'"
+                            [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+                        <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+                        <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+                    </span>
+                </td>
+                <td>
+                    <a nz-icon type="edit" title="{{'frontend.edit' | translate}}" (click)="edit(item)"></a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a nz-icon type="swap" title="{{'frontend.toggleActive' | translate}}" (click)="toggle(item)"></a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a nz-icon type="delete" title="{{'frontend.delete' | translate}}" nz-popconfirm
+                        nzTitle="{{'frontend.confirmDelete' | translate}}" (nzOnConfirm)="remove(item)"></a>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</nz-table>
+<ng-template #totalTemplate let-total> {{'frontend.total' | translate}}:&nbsp;&nbsp;{{ total }}</ng-template>

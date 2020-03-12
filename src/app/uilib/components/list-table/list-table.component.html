@@ -1,0 +1,63 @@
+<nz-table #nzTable (nzPageIndexChange)="pageIndexChange($event)" (nzPageSizeChange)="pageSizeChange($event)"
+          *ngIf="tableInfo.total > 0||tableInfo.isEmptyTableVisible"
+          [nzData]="tableInfo.data" [nzFrontPagination]="tableInfo.frontPaging ? tableInfo.frontPaging : false"
+          [nzLoading]="tableInfo.loading"
+          [nzPageIndex]="tableInfo.pageIndex ? tableInfo.pageIndex : 1"
+          [nzPageSizeOptions]="tableInfo.sizeOption"
+          [nzPageSize]="tableInfo.pageSize ? tableInfo.pageSize : 10"
+          [nzShowPagination]="tableInfo.showPaging ? tableInfo.showPaging : true"
+          [nzShowSizeChanger]="tableInfo.showSizeChanger"
+          [nzSize]="tableInfo.size ? tableInfo.size : 'default'"
+          [nzTotal]="tableInfo.total">
+  <thead>
+  <tr>
+    <th *ngFor="let column of tableInfo.dataColumns">
+      <span>{{column.label | translate}}</span>
+    </th>
+    <th *ngIf="isButtonsVisible()">
+      <span>{{tableInfo.buttonColumn.label | translate}}</span>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of nzTable.data">
+    <td *ngFor="let column of tableInfo.dataColumns">
+      <ng-container *ngIf="!column.translate">
+        <ng-container *ngIf="!column.clickEvent">{{formatContent(data, column)}}</ng-container>
+        <a (click)="column.clickEvent(data)" *ngIf="column.clickEvent">{{formatContent(data, column)}}</a>
+      </ng-container>
+      <ng-container *ngIf="column.translate">
+        <ng-container *ngIf="!column.clickEvent">{{formatContent(data, column) | translate}}</ng-container>
+        <a (click)="column.clickEvent(data)" *ngIf="column.clickEvent">{{formatContent(data, column) | translate}}</a>
+      </ng-container>
+    </td>
+    <td *ngIf="isButtonsVisible()">
+      <ng-container *ngFor="let button of tableInfo.buttonColumn.buttons;let i = index">
+        <ng-container *ngIf="button.isVisible(data)">
+          <ng-container *ngIf="button.confirm">
+            <ng-container *ngIf="!button.icon">
+              <a (nzOnConfirm)="button.event(data)" nz-popconfirm nzTitle="{{button.confirmTitle | translate}}"
+              >{{button.label | translate}}</a>
+            </ng-container>
+            <ng-container *ngIf="button.icon">
+              <a (nzOnConfirm)="button.event(data)" [title]="button.label | translate" [type]="button.icon"
+                 nz-icon nz-popconfirm nzTitle="{{button.confirmTitle | translate}}"></a>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="!button.confirm">
+            <ng-container *ngIf="!button.icon">
+              <a (click)="button.event(data)">{{button.label | translate}}</a>
+            </ng-container>
+            <ng-container *ngIf="button.icon">
+              <a (click)="button.event(data)" [title]="button.label | translate" [type]="button.icon" nz-icon></a>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="i >= 0 && i < tableInfo.buttonColumn.buttons.length - 1">
+            <nz-divider nzType="vertical"></nz-divider>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

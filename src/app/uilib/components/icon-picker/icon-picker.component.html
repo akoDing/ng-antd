@@ -1,0 +1,16 @@
+<ng-template #contentTemplate>
+  <div [ngStyle]="popContentStyle">
+    <div nz-card-grid *ngFor="let icon of icons" [ngStyle]="gridStyle" (click)="selectIcon(icon)">
+      <i nz-icon [nzType]="icon"></i>
+    </div>
+  </div>
+</ng-template>
+<button
+  nz-button
+  nz-popover
+  [(nzVisible)]="visible"
+  [nzContent]="contentTemplate"
+  nzTrigger="click"
+  [disabled]="disabled">
+  <i nz-icon [nzType]="selectedIcon ? selectedIcon :'appstore'"></i>
+</button>

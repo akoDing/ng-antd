@@ -1,0 +1,35 @@
+<form (ngSubmit)="submitForm($event)" [formGroup]="validateForm" nz-form>
+  <div nz-row nzJustify="space_between" nzType="flex" style="margin-bottom: 20px">
+
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.productType.product' | translate }}</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <enum-select formControlName="product" parentName="product_type"></enum-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.productType.description' | translate }}</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input formControlName="description" nz-input/>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+  </div>
+
+  <div nz-row style="text-align: center;margin-top: 18px;">
+    <nz-form-item>
+      <nz-form-control>
+        <button [disabled]="!validateForm.valid" nz-button
+                nzType="primary">{{'frontend.save' | translate}}</button>
+        <button (click)="closeTabWithoutSave($event)" nz-button
+                style="margin-left: 12px;">{{'frontend.back' | translate}}</button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</form>
+

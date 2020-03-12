@@ -1,0 +1,7 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template #table>
+  <app-comment-template-table [reload]="reload" (onEdit)="edit($event)" (onCreate)="create()" ></app-comment-template-table>
+</ng-template>
+<ng-template let-commentTemplate="commentTemplate" let-i18nList="i18nList" #detail>
+  <app-comment-template-detail [commentTemplate]="commentTemplate" [i18nList]="i18nList" (afterSave)="closeTabAndReload(index, $event)" ></app-comment-template-detail>
+</ng-template>

@@ -1,0 +1,21 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+  <form [formGroup]="searchForm" nz-form>
+    <div [nzGutter]="16" nz-form-item nz-row>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <input formControlName="opportunityNo" nz-input
+               placeholder="{{'frontend.funnel.opportunityNo' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <button (click)="onSearch($event)" [nzLoading]="funnelTableInfo.loading" [nzType]="'primary'"
+                nz-button>{{'frontend.search' | translate}}</button>
+        <button (click)="onReset($event)" [nzType]="'primary'" nz-button
+                style=" margin-left:16px;">{{'frontend.reset' | translate}}</button>
+      </div>
+    </div>
+  </form>
+  <div nz-row>
+    <button nz-button style="margin-top:16px;" [nzType]="'primary'"
+            (click)="create($event)">{{'frontend.create' | translate}}</button>
+  </div>
+</div>
+<app-list-table [tableInfo]="funnelTableInfo" (pageChange)="onChangePage()"></app-list-table>

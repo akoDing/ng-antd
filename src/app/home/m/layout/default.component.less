@@ -1,0 +1,58 @@
+::ng-deep .top-navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 101;
+}
+::ng-deep .top-drawer {
+    position: relative;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    .am-drawer-sidebar {
+        position: fixed;
+        z-index: 100;
+        background-color: #ffffff;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-top: 45px;
+    }
+    .am-drawer-sidebar .am-list {
+        width: 250px;
+        padding: 0;
+    }
+    .am-drawer-content .am-drawer-draghandle {
+        width: 0;
+    }
+    .am-drawer-overlay {
+        z-index: 99;
+    }
+}
+::ng-deep .am-navbar-left, ::ng-deep .am-navbar-title, ::ng-deep .am-navbar-right {
+    flex-basis: auto;
+}
+.app-content {
+    padding: 0 10px;
+    margin-top: 50px;
+}
+
+::ng-deep .am-navbar-right {
+    margin-right: 10px;
+}
+
+
+::ng-deep .ant-select-selection-selected-value{
+    padding-right: 12px;
+}
+::ng-deep .ant-select-sm .ant-select-arrow{
+    right: 3px;
+}
+::ng-deep .ant-select-dropdown-menu-item {
+    font-weight: initial;
+    font-size: 12px;
+}
+
+::ng-deep .am-drawer-content{
+    position: relative;
+}
+ 

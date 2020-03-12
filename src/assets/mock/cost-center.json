@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "costCenterName": "成本中心1号", 
+        "costOwner": "负责人一",
+        "costOwnerEmail":"aaa@email.com",
+        "controller": "控制人一",
+        "controllerEmail":"AAA@email.com",
+        "order_index": 1,
+        "active":true,
+        "deleted":false,
+        "remark":"rrrrrmmmkkk1"
+    },
+    {
+        "id": 2,
+        "costCenterName": "成本中心2号",
+        "costOwner": "负责人二",
+        "costOwnerEmail": "bbb@email.com",
+        "controller": "控制人二",
+        "controllerEmail": "BBB@email.com",
+        "order_index": 2,
+        "active": true,
+        "deleted": false,
+        "remark": "rrrrrmmmkkk2"
+    },
+    {
+        "id": 3,
+        "costCenterName": "成本中心3号",
+        "costOwner": "负责人三",
+        "costOwnerEmail": "ccc@email.com",
+        "controller": "控制人三",
+        "controllerEmail": "CCC@email.com",
+        "order_index": 3,
+        "active": true,
+        "deleted": false,
+        "remark": "rrrrrmmmkkk3"
+    },
+    {
+        "id": 4,
+        "costCenterName": "成本中心4号",
+        "costOwner": "负责人四",
+        "costOwnerEmail": "ddd@email.com",
+        "controller": "控制人四",
+        "controllerEmail": "DDD@email.com",
+        "order_index": 4,
+        "active": true,
+        "deleted": false,
+        "remark": "rrrrrmmmkkk4"
+    },
+    {
+        "id": 5,
+        "costCenterName": "成本中心1号",
+        "costOwner": "负责人五",
+        "costOwnerEmail": "eee@email.com",
+        "controller": "控制人五",
+        "controllerEmail": "EEE@email.com",
+        "order_index": 5,
+        "active": true,
+        "deleted": false,
+        "remark": "rrrrrmmmkkk5"
+    }
+]

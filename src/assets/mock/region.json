@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "province_cn": "上海市", 
+        "province_en": "Shanghai",
+        "region":"Region 1",
+        "order_index": 1,
+        "active":true,
+        "deleted":false,
+        "remark":"rrrrrmmmkkk1"
+    },
+    {
+        "id": 2,
+        "province_cn": "陕西省",
+        "province_en": "Shaanxi",
+        "region": "Region 2",
+        "order_index": 2,
+        "active": true,
+        "deleted": false,
+        "remark": "rrrrrmmmkkk2"
+    },
+    {
+        "id": 3,
+        "province_cn": "山西省",
+        "province_en": "Shanxi",
+        "region": "Region 3",
+        "order_index": 3,
+        "active": true,
+        "deleted": false,
+        "remark": "rrrrrmmmkkk3"
+    },
+    {
+        "id": 4,
+        "province_cn": "浙江省",
+        "province_en": "Zhejiang",
+        "region": "Region 4",
+        "order_index": 4,
+        "active": true,
+        "deleted": false,
+        "remark": "rrrrrmmmkkk4"
+    }
+]

@@ -1,0 +1,8 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template #table>
+    <app-email-template-table [reload]="reload" (onEdit)="edit($event)" (onCreate)="create()"></app-email-template-table>
+</ng-template>
+<ng-template let-emailTemplate="emailTemplate" #detail>
+    <app-email-template-detail [emailTemplate]="emailTemplate" (afterSave)="closeTabAndReload(index, $event)">
+    </app-email-template-detail>
+</ng-template>

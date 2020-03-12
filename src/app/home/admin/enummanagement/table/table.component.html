@@ -1,0 +1,76 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+    <form nz-form [formGroup]="searchForm">
+        <div nz-form-item nz-row [nzGutter]="16">
+            <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+                <input formControlName="name" nz-input placeholder="{{'frontend.thName' | translate}}"
+                    #filterInputs attr.filtername="name">
+            </div>
+            <div nz-col [nzSm]="4" [nzXs]="24">
+                <input formControlName="displayName" nz-input placeholder="{{'frontend.displayName' | translate}}" #filterInputs
+                    attr.filtername="displayName">
+            </div>
+            <div nz-col [nzSm]="4" [nzXs]="24">
+                <input formControlName="display" nz-input placeholder="{{'frontend.thEnumDisplay' | translate}}" #filterInputs
+                    attr.filtername="display">
+            </div>
+            <div nz-form-label nz-col [nzSm]="4" [nzXs]="24">
+                <button nz-button [nzType]="'primary'" (click)="doSearch($event)"
+                    [nzLoading]="_operatingFlag">{{'frontend.search' | translate}}</button>
+                <button nz-button style=" margin-left:16px;" [nzType]="'primary'"
+                    (click)="doReset($event)">{{'frontend.reset' | translate}}</button>
+                <!-- <button nz-button style=" margin-left:16px;" [nzType]="'primary'" (click)="test123($event)">test123</button> -->
+            </div>
+        </div>
+    </form>
+    <div nz-row>
+        <button nz-button style=" margin-top:16px;" [nzType]="'primary'"
+            (click)="create($event)">{{'frontend.createEnumRoot' | translate}}</button>
+    </div>
+</div>
+
+<nz-table #expandTable 
+    [nzData]="dataList" 
+    [nzFrontPagination]="true" 
+    [nzShowPagination]="true"
+    [nzLoading]="_operatingFlag" 
+    [nzSize]="'small'" 
+    [nzPageSize]="pageSize" 
+    [(nzPageIndex)]="pageIndex"
+    style="margin-top: 20px;">
+    <thead>
+        <tr>
+            <th nzWidth="40%">{{'frontend.thName' | translate}}</th>
+            <th nzWidth="10%">{{'frontend.chinese' | translate}}</th>
+            <th nzWidth="10%">{{'frontend.english' | translate}}</th>
+            <th nzWidth="20%">{{'frontend.thEnumDisplay' | translate}}</th>
+            <!-- <th nzWidth="10%">{{'frontend.thActive' | translate}}</th> -->
+            <th nzWidth="20%">{{'frontend.thAction' | translate}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let data of expandTable.data">
+            <ng-container *ngFor="let item of mapOfExpandedData[data.key]">
+                <tr *ngIf="(item.parent && item.parent.expand) || !item.parent">
+                    <td [nzIndentSize]="item.level * 20" [nzShowExpand]="!!item.children" [(nzExpand)]="item.expand"
+                        (nzExpandChange)="collapse(mapOfExpandedData[data.key], item, $event)">
+                        {{ item.name }}
+                    </td>
+                    <td>{{ item.zh }}</td>
+                    <td>{{ item.en }}</td>
+                    <td>{{ item.display }}</td>
+                    <td>
+                        <a nz-icon type="edit" title="{{'frontend.edit' | translate}}" (click)="edit(item)"></a>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <a nz-icon type="plus" title="{{'frontend.createEnumChild' | translate}}" (click)="insert(item)"></a>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <!-- <a nz-icon type="swap" title="{{'frontend.toggleActive' | translate}}" (click)="toggle(item)"></a>
+                        <nz-divider nzType="vertical"></nz-divider> -->
+                        <a nz-icon *ngIf="!item.children" type="delete" title="{{'frontend.delete' | translate}}" nz-popconfirm
+                            nzTitle="{{'frontend.confirmDelete' | translate}}" (nzOnConfirm)="delete(item)"></a>
+                    </td>
+                </tr>
+            </ng-container>
+        </ng-container>
+    </tbody>
+</nz-table>
+<!-- <ng-template #totalTemplate let-total> {{'frontend.total' | translate}}:&nbsp;&nbsp;{{ total }}</ng-template> -->

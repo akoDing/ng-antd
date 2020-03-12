@@ -1,0 +1,35 @@
+<nz-table #simpleTable 
+    [nzData]="dataList" 
+    [nzFrontPagination]="false" 
+    [nzShowPagination]="true"
+    [nzLoading]="_operatingFlag" 
+    [nzSize]="'small'" 
+    [nzShowTotal]="totalTemplate" 
+    [nzPageSize]="pageSize"
+    [nzTotal]="total" 
+    [(nzPageIndex)]="pageIndex" 
+    (nzPageIndexChange)="loadTable()" 
+    style="margin-top: 20px">
+    <thead>
+        <tr>
+            <th nzWidth="35%">{{'frontend.thName' | translate}}</th>
+            <th nzWidth="35%">{{'frontend.thEmail' | translate}}</th>
+            <!-- <th nzWidth="100px">{{'frontend.thActive' | translate}}</th> -->
+            <th nzWidth="30%" nzRight="0px">{{'frontend.thAction' | translate}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let item of simpleTable.data">
+            <tr>
+                <td>{{ item.lastName }}</td>
+                <td>{{ item.email }}</td>
+                <td nzWidth="30%" nzRight="0px">
+                    <a nz-icon type="eye" title="{{'frontend.view' | translate}}" (click)="view(item)"></a>
+                    <nz-divider nzType="vertical"></nz-divider>
+                    <a nz-icon type="swap" title="{{'frontend.toggleActive' | translate}}" (click)="toggle(item)"></a>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</nz-table>
+<ng-template #totalTemplate let-total> {{'frontend.total' | translate}}:&nbsp;&nbsp;{{ total }}</ng-template>

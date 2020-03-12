@@ -1,0 +1,236 @@
+<form (ngSubmit)="submitForm($event)" nz-form>
+
+  <nz-card nzTitle="{{ 'frontend.setmeal.name' | translate }}" class="card-row">
+    <div nz-row>
+      <div [nzSpan]="24" nz-col>
+        <div nz-row nzJustify="space_between" nzType="flex" style="margin-bottom: 20px">
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.setmeal.name' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="请输入套餐名称" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.setmeal.beginTime' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="请选择开始时间" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.setmeal.endTime' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="请选择结束时间" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.setmeal.modality' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <enum-select parentName="service_type"></enum-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.setmeal.taxRate' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <enum-select parentName="service_type"></enum-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nz-card>
+
+  <nz-card nzTitle="{{ 'frontend.setmeal.modalityList' | translate }}" class="card-row">
+    <div nz-row>
+      <div [nzSpan]="24" nz-col>
+        <app-list-table [tableInfo]="modalityTableInfo"></app-list-table>
+      </div>
+    </div>
+  </nz-card>
+
+  <nz-card nzTitle="{{ 'frontend.setmeal.serviceList' | translate }}" class="card-row">
+    <div nz-row>
+      <div [nzSpan]="24" nz-col>
+        <app-list-table [tableInfo]="serviceTableInfo"></app-list-table>
+        <button style="margin-top: 10px;" nz-button nzType="dashed" (click)="showModal()" nzBlock>+ 新增服务</button>
+      </div>
+    </div>
+  </nz-card>
+
+  <nz-card nzTitle="{{ 'frontend.setmeal.totalPricecn' | translate }}" class="card-row">
+    <div nz-row>
+      <div [nzSpan]="24" nz-col>
+        <div nz-row nzJustify="space_between" nzType="flex" style="margin-bottom: 20px">
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.setmeal.priceCn' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="系统计算，可编辑" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.funnel.price_notax' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="系统计算" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.funnel.price_aftertax' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <input nz-input placeholder="系统计算" />
+              </nz-form-control>
+              <nz-form-label [nzSpan]="4" [nzNoColon]="true" class="formLabelColor">税率(13%)</nz-form-label>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.setmeal.grossProfitrate' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="系统计算" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.setmeal.totalPricecn' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="系统计算可修改" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nz-card>
+
+  <nz-card nzTitle="{{ 'frontend.setmeal.totalPriceus' | translate }}" class="card-row">
+    <div nz-row>
+      <div [nzSpan]="24" nz-col>
+        <div nz-row nzJustify="space_between" nzType="flex" style="margin-bottom: 20px">
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.setmeal.priceUs' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="系统计算，可编辑" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.setmeal.grossProfitrate' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="17">
+                <input nz-input placeholder="系统计算" />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="8" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">{{ 'frontend.setmeal.totalPriceus' | translate }}</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <input nz-input placeholder="系统计算" />
+              </nz-form-control>
+              <nz-form-label [nzSpan]="4" [nzNoColon]="true" class="formLabelColor">汇率(1:6.7)</nz-form-label>
+            </nz-form-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nz-card>
+
+  <div nz-row style="text-align: center;margin-top: 18px;">
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button nzType="primary">{{'frontend.save' | translate}}</button>
+        <button (click)="closeTabWithoutSave($event)" nz-button
+          style="margin-left: 12px;">{{'frontend.back' | translate}}</button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+
+</form>
+
+
+
+<!-- 新增服务modal-->
+<nz-modal nzWrapClassName="vertical-center-modal" nzWidth="80%" [(nzVisible)]="isVisible" [nzTitle]="modalTitle"
+  [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+  <ng-template #modalTitle>
+    新增服务
+  </ng-template>
+
+  <ng-template #modalContent>
+    <form nz-form>
+      <div nz-row>
+        <div [nzSpan]="24" nz-col>
+          <div nz-row nzJustify="space_between" nzType="flex" style="margin-bottom: 20px">
+            <div [nzSpan]="8" nz-col>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="7">{{ 'frontend.funnel.serviceLine' | translate }}</nz-form-label>
+                <nz-form-control [nzSpan]="17">
+                  <enum-select parentName="service_type"></enum-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div [nzSpan]="8" nz-col>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="7">{{ 'frontend.funnel.serviceType' | translate }}</nz-form-label>
+                <nz-form-control [nzSpan]="17">
+                  <enum-select parentName="service_type"></enum-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div [nzSpan]="8" nz-col>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="7">{{ 'frontend.funnel.serviceName' | translate }}</nz-form-label>
+                <nz-form-control [nzSpan]="17">
+                  <enum-select parentName="service_type"></enum-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div nz-row>
+        <button [nzType]="'primary'" nz-button>{{'frontend.add' | translate}}</button>
+      </div>
+    </form>
+    <nz-table style="margin-top: 26px;" #rowSelectionTable nzShowSizeChanger [nzData]="listOfAllData"
+      (nzCurrentPageDataChange)="currentPageDataChange($event)">
+      <thead>
+        <tr>
+          <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+            (nzCheckedChange)="checkAll($event)"></th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>xR
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (nzCheckedChange)="refreshStatus()"></td>
+          <td>{{ data.name }}</td>
+          <td>{{ data.age }}</td>
+          <td>{{ data.address }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">取消</button>
+    <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading">提交</button>
+  </ng-template>
+</nz-modal>

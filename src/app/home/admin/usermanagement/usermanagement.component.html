@@ -1,0 +1,7 @@
+<app-tab-router (onCloseTab)="closeTab($event)" [index]="index" [tabs]="tabs"></app-tab-router>
+<ng-template #userList>
+  <app-userlist [reload]="reload" (onEdit)="edit($event)" (onView)="view($event)" (onDisable)="disable($event)"></app-userlist>
+</ng-template>
+<ng-template #userDetail let-user="user" let-readonly="readonly">
+  <app-userdetail [user]="user" [readonly]="readonly" (afterSave)="closeTabAndReload(index, $event)"></app-userdetail>
+</ng-template>

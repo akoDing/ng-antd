@@ -1,0 +1,9 @@
+<app-tab-router (onCloseTab)="closeTab($event)" [index]="index" [tabs]="tabs"></app-tab-router>
+<ng-template #table>
+  <app-funnel-list-table [reload]="reload" (onEdit)="edit($event)" (onDisable)="remove($event)" (onView)="view($event)"
+                         (onLaunch)="launch($event)" (onCreate)="create()"></app-funnel-list-table>
+</ng-template>
+<ng-template #detail let-funnel="funnel" let-basicReadOnly="basicReadOnly" let-priceReadOnly="priceReadOnly">
+  <app-funnelform [funnelInfo]="funnel" [basicReadOnly]="basicReadOnly" [priceReadOnly]="priceReadOnly"
+                  (afterSave)="closeTabAndReload(index, $event)"></app-funnelform>
+</ng-template>

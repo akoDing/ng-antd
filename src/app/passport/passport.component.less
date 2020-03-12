@@ -1,0 +1,84 @@
+@import '../../app.custom.less';
+
+:host {
+	::ng-deep {
+
+		.container {
+			background-image: url("../../assets/img/login.svg");
+			background-color: @primary-color;
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-position: center 75px;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.login-content {
+			width: 95%;
+			z-index: 10;
+			.top {
+				text-align: center;
+				margin: auto;
+				margin-bottom: 30px;
+	
+				.head {
+					height: 44px;
+					line-height: 44px;
+					a {
+						text-decoration: none;
+					}
+	
+					.logo {
+						height: 44px;
+						vertical-align: top;
+						margin-right: 16px;
+					}
+			
+					.title {
+						font-size: 26px;
+						color: @heading-color-dark;
+						font-family: "Myriad Pro", "Helvetica Neue", Arial, Helvetica, sans-serif;
+						font-weight: 600;
+						position: relative;
+						top: 2px;
+					}
+				}
+			}
+			.login-body {
+				padding: 40px 10px 10px 10px;
+				max-width: 410px;
+				background-color: @background-color-base;
+				margin: auto;
+				box-shadow: @shadow-1-down;
+				border-radius: 5px;
+				
+				.ant-btn-primary {
+					width: 100%;
+				}
+			}
+		}
+
+		.login-footer {
+			position: absolute;
+			width: 100%;
+			bottom: 10px;
+			font-size: 12px;
+			z-index: 9;
+			a {
+				color: #fff;
+			}
+			span {
+				color: #b3c8e6;
+			}
+		}
+
+		@media (max-width: @screen-sm) {
+			.container {
+				background-position: left top;
+			}
+		}
+	}
+}

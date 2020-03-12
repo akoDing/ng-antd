@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "code": "examplecode", 
+        "locale":"en",
+        "value":"Father"
+    },
+    {
+        "id": 2,
+        "code": "examplecode",
+        "locale": "zh",
+        "value": "爸爸"
+    },
+    {
+        "id": 3,
+        "code": "examplecode",
+        "locale": "zh_TW",
+        "value": "壩壩"
+    }
+]

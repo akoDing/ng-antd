@@ -1,0 +1,86 @@
+::ng-deep InputItem {
+    .am-list-line {
+        border-bottom: 1px solid rgba(221, 221, 221, 0.4);
+        .am-input-label {
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 12px;
+        }
+    }
+}
+::ng-deep .am-list-item.am-input-item {
+    height: 30px;
+    min-height: 30px;
+    padding-left: 10px;
+}
+::ng-deep .am-list-item.am-list-item-middle .am-list-line {
+    border-bottom: 1px solid rgba(221, 221, 221, 0.4);
+}
+::ng-deep .am-list-item {
+    padding-left: 10px;
+    .am-list-line {
+        width: 100%;
+        overflow: visible;
+        .am-list-content {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.65);
+        }
+        .am-list-extra {
+            font-size: 15px;
+            color: rgba(0, 0, 0, 0.85);
+        }
+    }
+    .am-input-control {
+        input, .fake-input-container .fake-input {
+            color: rgba(0, 0, 0, 0.85);
+            font-size: 15px;
+        }
+    }
+}
+::ng-deep .form-required .am-list-item .am-list-line:before {
+    display: inline-block;
+    margin-right: 4px;
+    content: "*";
+    font-family: SimSun;
+    line-height: 1;
+    font-size: 14px;
+    color: #f5222d;
+    margin-left: -10px;
+}
+::ng-deep .digit-input {
+    height: 44px !important;
+    min-height: 44px !important;
+    .am-input-control input {
+        text-align: right;
+    }
+    .am-input-extra {
+        margin-top: 3px;
+    }
+}
+:host {
+    ::ng-deep {
+        .ant-form-explain, .alert-text, .ant-upload-select, .ant-radio-group, .ant-checkbox-wrapper, .error-text {
+            padding-left: 10px;
+        }
+        .ant-table {
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+        .ant-table-small > .ant-table-content > .ant-table-body > table {
+            padding: 0;
+        }
+        .ant-table-thead > tr > th {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.65);
+        }
+        .ant-input {
+            border: 0;
+            border-bottom: 1px solid #d9d9d9;
+            border-radius: 0;
+            color: rgba(0, 0, 0, 0.85);
+            padding-left: 0;
+        }
+        .ant-form-explain {
+            color: #f5222d;
+        }
+    }
+}

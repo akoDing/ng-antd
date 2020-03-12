@@ -1,0 +1,8 @@
+<ul>
+    <li *ngFor="let attachment of attachments">
+        <a href="{{attachment.url}}">
+            <i nz-icon type="paper-clip" theme="outline"></i>
+            {{attachment.name}}
+        </a>
+    </li>
+</ul>

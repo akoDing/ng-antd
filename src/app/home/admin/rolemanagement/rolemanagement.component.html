@@ -1,0 +1,7 @@
+<app-tab-router (onCloseTab)="closeTab($event)" [index]="index" [tabs]="tabs"></app-tab-router>
+<ng-template #roleList>
+  <app-rolelist [reload]="reload" (onCreate)="create()" (onEdit)="edit($event)" (onView)="view($event)" (onDisable)="disable($event)"></app-rolelist>
+</ng-template>
+<ng-template #roleDetail let-role="role" let-readonly="readonly">
+  <app-roledetail [role]="role" [readonly]="readonly" (afterSave)="closeTabAndReload(index, $event)"></app-roledetail>
+</ng-template>

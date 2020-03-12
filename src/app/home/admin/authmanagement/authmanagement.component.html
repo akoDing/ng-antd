@@ -1,0 +1,92 @@
+<nz-tabset>
+  <nz-tab nzTitle="{{'backend.authmanagement' |  translate}}">
+    <div nz-row style="margin-bottom: 20px">
+      <div [nzSpan]="6" nz-col>
+        <button nz-button
+                nz-popconfirm
+                nzType="primary"
+                [nzLoading]="saveLoading"
+                [disabled]="saveDisabled"
+                (nzOnConfirm)="saveChange()"
+                nzPopconfirmTitle="确认保存？">{{ 'frontend.save'| translate}}</button>
+      </div>
+    </div>
+    <div [nzGutter]="16" nz-row>
+      <div [nzSpan]="6" nz-col>
+        <nz-radio-group (ngModelChange)="changeSelectRole($event)" [(ngModel)]="selectRoleId">
+          <nz-list
+            [nzDataSource]="roleList"
+            [nzHeader]="header"
+            [nzRenderItem]="smallItem"
+            nzBordered
+            nzSize="small"
+          >
+            <ng-template #header>
+              <div>{{'frontend.auth.rolelist' |  translate}}</div>
+              <nz-divider style="margin: 7px 0"></nz-divider>
+              <nz-input-group [nzSize]="'small'" [nzSuffix]="suffixIconSearch">
+                <input (change)="searchRole($event)" nz-input placeholder="input search text" type="text"/>
+              </nz-input-group>
+              <ng-template #suffixIconSearch>
+                <i nz-icon nzType="search"></i>
+              </ng-template>
+            </ng-template>
+            <ng-template #smallItem let-item>
+              <nz-list-item>
+                <label [nzValue]="item.id" nz-radio>{{item.displayName}}</label>
+              </nz-list-item>
+            </ng-template>
+          </nz-list>
+        </nz-radio-group>
+      </div>
+      <div [nzSpan]="18" nz-col>
+        <nz-table
+          #expandTable
+          [nzData]="menuTreeList"
+          [nzLoading]="menuLoading"
+          [nzShowPagination]=false
+          [nzSize]="'small'"
+          nzTitle="{{'frontend.auth.menulist' |  translate}}">
+          <thead>
+          <tr>
+            <th (nzCheckedChange)="checkAll($event)"
+                [(nzChecked)]="isAllDisplayDataChecked"
+                [nzDisabled]="!selectRoleId"
+                [nzIndeterminate]="isIndeterminate"
+                nzShowCheckbox
+                nzWidth="2%"></th>
+            <th nzShowExpand nzWidth="30%">{{'frontend.thName' | translate}}</th>
+            <th nzWidth="5%">{{'frontend.type' | translate}}</th>
+            <th nzWidth="5%">{{'frontend.thIcon' | translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <ng-container *ngFor="let data of expandTable.data">
+            <ng-container *ngFor="let item of mapOfExpandedData[data.key]">
+              <tr *ngIf="(item.parent && item.parent.expand) || !item.parent">
+                <td (nzCheckedChange)="refreshStatus(item)"
+                    [nzDisabled]="!selectRoleId"
+                    [nzChecked]="!!mapOfCheckedId[item.id]"
+                    [nzIndeterminate]="!!mapOfCheckedId[item.id] ? mapOfCheckedId[item.id].indeterminate : false"
+                    nzShowCheckbox></td>
+                <td
+                  (nzExpandChange)="collapse(mapOfExpandedData[data.key], item, $event)"
+                  [(nzExpand)]="item.expand"
+                  [nzIndentSize]="item.level * 20"
+                  [nzShowExpand]="!!item.children"
+                >{{ 'backend.' + item.name | translate }}</td>
+                <td>
+                  <nz-tag
+                    [nzColor]="item.button ? 'blue' : 'green'">{{item.button ? ('frontend.button' | translate) : ('frontend.menu' | translate) }}</nz-tag>
+                </td>
+                <td><i [nzType]="item.icon ? item.icon: 'appstore'" nz-icon nzTheme="outline"></i></td>
+              </tr>
+            </ng-container>
+          </ng-container>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </nz-tab>
+</nz-tabset>
+

@@ -1,0 +1,7 @@
+<app-tab-router (onCloseTab)="closeTab($event)" [index]="index" [tabs]="tabs"></app-tab-router>
+<ng-template #productList>
+  <app-productlist [reload]="reload" (onCreate)="create()" (onEdit)="edit($event)" (onView)="view($event)" (onDisable)="disable($event)"></app-productlist>
+</ng-template>
+<ng-template #productDetail let-producttype="producttype" let-readonly="readonly">
+  <app-productdetail [producttype]="producttype" [readonly]="readonly" (afterSave)="closeTabAndReload(index, $event)"></app-productdetail>
+</ng-template>

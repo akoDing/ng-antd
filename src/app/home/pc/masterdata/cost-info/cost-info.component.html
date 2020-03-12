@@ -1,0 +1,7 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template #table>
+  <app-cost-info-table [reload]="reload" (onEdit)="edit($event)" (onCreate)="create()" (onSave)="save($event)" (onDelete)="remove($event)"></app-cost-info-table>
+</ng-template>
+<ng-template let-costInfo="costInfo" #detail>
+  <app-cost-info-detail [costInfo]="costInfo" (afterSave)="closeTabAndReload(index,$event)"> </app-cost-info-detail>
+</ng-template>

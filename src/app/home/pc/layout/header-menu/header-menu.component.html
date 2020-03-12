@@ -1,0 +1,37 @@
+<div [class.header-menu-collapsed]="setting.layout.headerCollapsed" class="header-menu">
+  <ul [nzMode]="'horizontal'" nz-menu>
+    <li nz-menu-item>
+      <a routerLink="/pc/index">
+                <span title>
+                    <i nz-icon theme="outline" type="home"></i>
+                    <span class="nav-text">{{'frontend.Home' | translate}}</span>
+                </span>
+      </a>
+    </li>
+    <ng-container *ngFor="let data of menuData">
+      <ng-container *ngIf="!data.children || data.children.length == 0">
+        <li nz-menu-item>
+          <a routerLink="{{device + data.path}}">
+            <span title>
+              <i [type]="getIconType(data.icon)" nz-icon></i>
+              <span class="nav-text">{{'backend.' + data.name  | translate}}</span>
+            </span>
+          </a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="!!data.children && data.children.length > 0">
+        <li nz-submenu>
+          <span title>
+          <i [type]="getIconType(data.icon)" nz-icon></i>
+          <span class="nav-text">{{'backend.' + data.name | translate}}</span>
+        </span>
+          <ul>
+            <li *ngFor="let menuItem of data.children" [(nzSelected)]="menuItem.selected" nz-menu-item>
+              <a class='header-menu-link' routerLink="{{device + data.path + menuItem.path}}">{{'backend.' + menuItem.name | translate}}</a>
+            </li>
+          </ul>
+        </li>
+      </ng-container>
+    </ng-container>
+  </ul>
+</div>

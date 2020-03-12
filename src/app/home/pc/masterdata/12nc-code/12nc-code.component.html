@@ -1,0 +1,7 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template #table>
+  <app-12nc-code-table [reload]="reload" (onEdit)="edit($event)" (onCreate)="create()" (onSave)="save($event)" (onDelete)="remove($event)"></app-12nc-code-table>
+</ng-template>
+<ng-template let-ncCode="ncCode" #detail>
+  <app-12nc-code-detail [ncCode]="ncCode" (afterSave)="closeTabAndReload(index,$event)"></app-12nc-code-detail>
+</ng-template>

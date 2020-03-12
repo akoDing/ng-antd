@@ -1,0 +1,48 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm($event, validateForm.value)">
+  <div nz-row nzType="flex" nzJustify="space_between">
+    <div nz-col nzSpan="24">
+      <nz-form-item [nzGutter]="4">
+        <nz-form-label [nzSpan]="3" nzRequired>{{'frontend.cost.name' | translate}}</nz-form-label>
+        <nz-form-control [nzSpan]="6" nzErrorTip="{{'frontend.requiredText' | translate}}">
+          <input nz-input formControlName="name" />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row nzType="flex" nzJustify="space_between">
+    <div nz-col nzSpan="12">
+    <nz-form-item [nzGutter]="8">
+      <nz-form-label [nzSpan]="6" nzRequired>{{'frontend.cost.priceCn' | translate}}</nz-form-label>
+      <nz-form-control [nzSpan]="12">
+        <nz-input-number formControlName="priceCn"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+    <div nz-col nzSpan="12">
+      <nz-form-item [nzGutter]="8">
+        <nz-form-label [nzSpan]="6" nzRequired>{{'frontend.cost.unit' | translate}}</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="{{'frontend.requiredText' | translate}}">
+          <input nz-input formControlName="unit"/>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row nzType="flex" nzJustify="space_between">
+    <div nz-col nzSpan="12">
+      <nz-form-item [nzGutter]="8">
+        <nz-form-label [nzSpan]="6" >{{'frontend.active' | translate}}</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <nz-switch formControlName="active" nzCheckedChildren="1" nzUnCheckedChildren="0"></nz-switch>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row style="text-align: center;margin-top: 18px;">
+    <nz-form-item>
+      <nz-form-control>
+        <button nz-button nzType="primary" [disabled]="!validateForm.valid">{{'frontend.save' | translate}}</button>
+        <button nz-button style="margin-left: 12px;" (click)="closeTabWithoutSave($event)">{{'frontend.back' | translate}}</button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</form>

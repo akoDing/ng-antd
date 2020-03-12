@@ -1,0 +1,25 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+  <form [formGroup]="searchForm" nz-form>
+    <div [nzGutter]="16" nz-form-item nz-row>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <input formControlName="name" nz-input
+               placeholder="{{'frontend.role.name' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col>
+        <input formControlName="displayName" nz-input
+               placeholder="{{'frontend.role.displayName' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <button (click)="onSearch($event)" [nzLoading]="roleTableInfo.loading" [nzType]="'primary'"
+                nz-button>{{'frontend.search' | translate}}</button>
+        <button (click)="onReset($event)" [nzType]="'primary'" nz-button
+                style=" margin-left:16px;">{{'frontend.reset' | translate}}</button>
+      </div>
+    </div>
+  </form>
+  <div nz-row>
+    <button nz-button style="margin-top:16px;" [nzType]="'primary'"
+            (click)="create($event)">{{'frontend.create' | translate}}</button>
+  </div>
+</div>
+<app-list-table [tableInfo]="roleTableInfo" (pageChange)="onChangePage"></app-list-table>

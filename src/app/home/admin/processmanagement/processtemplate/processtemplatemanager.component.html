@@ -1,0 +1,14 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+  <div [nzGutter]="16" nz-form-item nz-row>
+    <form [formGroup]="uploadForm" (ngSubmit)="submitForm($event, uploadForm.value)" nz-form>
+      <div [nzSm]="10" [nzXs]="24" nz-col nz-form-label>
+        <file-upload formControlName="files" [limit]="1"></file-upload>
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <button [nzLoading]="processtemplateTableInfo.loading"  [nzType]="'primary'" nz-button>{{'frontend.processtemplate.uploadFile' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-list-table [tableInfo]="processtemplateTableInfo"></app-list-table>

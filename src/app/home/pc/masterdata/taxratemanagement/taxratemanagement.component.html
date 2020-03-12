@@ -1,0 +1,7 @@
+<app-tab-router (onCloseTab)="closeTab($event)" [index]="index" [tabs]="tabs"></app-tab-router>
+<ng-template #taxrateList>
+  <app-taxratelist [reload]="reload" (onCreate)="create()" (onEdit)="edit($event)" (onView)="view($event)" (onDisable)="disable($event)"></app-taxratelist>
+</ng-template>
+<ng-template #taxrateDetail let-taxrate="taxrate" let-readonly="readonly">
+  <app-taxratedetail [taxrate]="taxrate" [readonly]="readonly" (afterSave)="closeTabAndReload(index, $event)"></app-taxratedetail>
+</ng-template>

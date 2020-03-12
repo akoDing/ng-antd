@@ -1,0 +1,42 @@
+<form nz-form [formGroup]="validateForm" *ngIf="afterInit" (ngSubmit)="submitForm($event, validateForm.value)">
+    <div nz-row nzType="flex" nzJustify="space-between">
+        <div nz-col nzSpan="24">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="3" nzRequired>{{'frontend.thTitle' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="18" nzErrorTip="{{'frontend.requiredText' | translate}}">
+                    <input nz-input formControlName="title" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row nzType="flex" nzJustify="space_between">
+        <nz-form-label [nzSpan]="3" >{{'frontend.thContent' | translate}}</nz-form-label>
+        <div nz-col nzSpan="18">
+            <quill-editor id="email-template-qe" placeholder="" formControlName="content" [modules]="modules"></quill-editor>
+        </div>
+    </div>
+
+    <div nz-row nzType="flex" nzJustify="space_between">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6">{{'frontend.thActive' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                    <nz-switch formControlName="active" nzCheckedChildren="1" nzUnCheckedChildren="0"></nz-switch>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div nz-row style="text-align: center;margin-top: 18px;">
+        <nz-form-item>
+            <nz-form-control>
+                <button nz-button nzType="primary"
+                    [disabled]="!validateForm.valid">{{'frontend.save' | translate}}</button>
+                <button nz-button style="margin-left: 12px;"
+                    (click)="closeTabWithoutSave($event)">{{'frontend.back' | translate}}</button>
+                <!-- <button nz-button style="margin-left: 12px;" (click)="test123($event)">test123</button> -->
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+</form>

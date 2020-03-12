@@ -1,0 +1,66 @@
+<!--<nz-card nzTitle="{{ 'frontend.taxrate.basic_info' | translate }}">-->
+<form (ngSubmit)="submitForm($event)" [formGroup]="validateForm" nz-form>
+  <div nz-row nzJustify="space_between" nzType="flex" style="margin-bottom: 20px">
+
+<!--    <div [nzSpan]="12" nz-col>-->
+<!--      <nz-form-item>-->
+<!--        <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.taxrate.currency' | translate }}</nz-form-label>-->
+<!--        <nz-form-control [nzSpan]="12">-->
+<!--          <enum-select formControlName="currency" parentName="currency_type"></enum-select>-->
+<!--        </nz-form-control>-->
+<!--      </nz-form-item>-->
+<!--    </div>-->
+
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.taxrate.tax_rate' | translate }}</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <nz-input-number formControlName="taxRate"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.taxrate.start_time' | translate }}</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+              <nz-date-picker formControlName="startTime" nzPlaceHolder="请选择开始日期"
+                              [(ngModel)]="taxrate.startTime"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>{{ 'frontend.taxrate.end_time' | translate }}</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <nz-date-picker [nzDisabledDate]="disabledDate"
+                          formControlName="endTime"
+                          nzPlaceHolder="请选择结束期"></nz-date-picker>
+
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+<!--    <div [nzSpan]="12" nz-col>-->
+<!--      <nz-form-item>-->
+<!--        <nz-form-label [nzSpan]="7" >{{ 'frontend.exchangerate.active' | translate }}</nz-form-label>-->
+<!--        <nz-form-control [nzSpan]="12">-->
+<!--          <nz-switch formControlName="active" nzCheckedChildren="1" nzUnCheckedChildren="0"></nz-switch>-->
+<!--        </nz-form-control>-->
+<!--      </nz-form-item>-->
+<!--    </div>-->
+  </div>
+
+  <div nz-row style="text-align: center;margin-top: 18px;">
+    <nz-form-item>
+      <nz-form-control>
+        <button [disabled]="!validateForm.valid" nz-button
+                nzType="primary">{{'frontend.save' | translate}}</button>
+        <button (click)="closeTabWithoutSave($event)" nz-button
+                style="margin-left: 12px;">{{'frontend.back' | translate}}</button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</form>
+<!--</nz-card>-->

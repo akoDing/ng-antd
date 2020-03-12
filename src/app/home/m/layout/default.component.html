@@ -1,0 +1,33 @@
+<div>
+    <Navbar class="top-navbar" [icon]="icon" [rightContent]="rightContent" (onLeftClick)="onOpenChange()">
+        {{'frontend.HomeTitle' | translate}}
+    </Navbar>
+    <Drawer class="top-drawer" position="top" [ngStyle]="{minHeight: this.height+'px'}" [enableDragHandle]="true"
+        [sidebar]="sidebar" [open]="this.state.open" (onOpenChange)="onOpenChange()">
+        <div class="app-content">
+            <router-outlet></router-outlet>
+        </div>
+    </Drawer>
+</div>
+
+<ng-template #icon>
+    <i nz-icon type="bars" theme="outline"></i>
+</ng-template>
+
+<ng-template #sidebar>
+    <app-sidebar [device]="'/m'" (menuDataReadyEvent)="onMenuDataReadyEvent($event)" (itemClickEvent)="onItemClickEvent($event)"></app-sidebar>
+</ng-template>
+
+<ng-template #rightContent>
+
+    <div style="margin-right: 15px">
+        <app-fullscreen></app-fullscreen>
+    </div>
+
+    <div style="margin-right: 20px">
+        <header-user></header-user>
+    </div>
+
+    <header-language></header-language>
+
+</ng-template>

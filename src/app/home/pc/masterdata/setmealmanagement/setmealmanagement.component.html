@@ -1,0 +1,9 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template #table>
+  <app-setmeal-management-table [reload]="reload" (onEdit)="edit($event)" (onCreate)="create()" (onSave)="save($event)"
+    (onDelete)="remove($event)"></app-setmeal-management-table>
+</ng-template>
+<ng-template let-setmealService="setmealService" #detail>
+  <app-setmeal-management-detail [setmealService]="setmealService" (afterSave)="closeTabAndReload(index,$event)">
+  </app-setmeal-management-detail>
+</ng-template>

@@ -1,0 +1,29 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+  <form [formGroup]="searchForm" nz-form>
+    <div [nzGutter]="16" nz-form-item nz-row>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <input formControlName="businessNumber" nz-input
+               placeholder="{{'frontend.process.businessNumber' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col>
+        <input formControlName="processName" nz-input
+               placeholder="{{'frontend.process.name' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col>
+        <input formControlName="businessName" nz-input
+               placeholder="{{'frontend.process.businessName' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col>
+        <sys-user-select key="username" formControlName="owner" placeholder="{{'frontend.process.owner' | translate}}"></sys-user-select>
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <button (click)="onSearch($event)" [nzLoading]="processInstanceTableInfo.loading" [nzType]="'primary'"
+                nz-button>{{'frontend.search' | translate}}</button>
+        <button (click)="onReset($event)" [nzType]="'primary'" nz-button
+                style=" margin-left:16px;">{{'frontend.reset' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+<app-list-table [tableInfo]="processInstanceTableInfo" (pageChange)="onChangePage()"></app-list-table>
+

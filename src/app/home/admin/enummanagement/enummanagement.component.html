@@ -1,0 +1,8 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template #table>
+    <app-enum-table [reload]="reload" (onEdit)="edit($event)" (onCreate)="create()" (onInsert)="insert($event)"></app-enum-table>
+</ng-template>
+<ng-template let-enumEntity="enumEntity" let-parentName="parentName" let-i18nList="i18nList" #detail>
+    <app-enum-detail [enumEntity]="enumEntity" [parentName]="parentName" [i18nList]="i18nList" (afterSave)="closeTabAndReload(index, $event)">
+    </app-enum-detail>
+</ng-template>

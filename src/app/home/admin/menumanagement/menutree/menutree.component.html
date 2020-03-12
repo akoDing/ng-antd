@@ -1,0 +1,51 @@
+<div style="margin-bottom: 16px;">
+  <button (click)="create()" [nzType]="'primary'" nz-button>{{'frontend.create' | translate}}</button>
+</div>
+<nz-table #expandTable
+          [nzData]="menuTreeList"
+          [nzLoading]="menuLoading"
+          [nzSize]="'small'"
+          [nzShowPagination]=falsemenu
+          style="margin-top: 20px">
+  <thead>
+  <tr>
+    <th nzWidth="30%">{{'frontend.thName' | translate}}</th>
+    <th nzWidth="5%">{{'frontend.type' | translate}}</th>
+    <th nzWidth="5%">{{'frontend.thIcon' | translate}}</th>
+    <th nzWidth="17%">{{'frontend.path' | translate}}</th>
+    <th nzWidth="17%">{{'frontend.sourceUrl' | translate}}</th>
+    <th nzWidth="10%">{{'frontend.thAction' | translate}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let data of expandTable.data">
+    <ng-container *ngFor="let item of mapOfExpandedData[data.key]">
+      <tr *ngIf="(item.parent && item.parent.expand) || !item.parent">
+        <td
+          [nzIndentSize]="item.level * 20"
+          [nzShowExpand]="!!item.children"
+          [(nzExpand)]="item.expand"
+          (nzExpandChange)="collapse(mapOfExpandedData[data.key], item, $event)"
+        >
+          {{ 'backend.' + item.name | translate }}
+        </td>
+        <td>
+          <nz-tag
+            [nzColor]="item.button ? 'blue' : 'green'">{{item.button ? ('frontend.button' | translate) : ('frontend.menu' | translate) }}</nz-tag>
+        </td>
+        <td><i nz-icon [nzType]="item.icon ? item.icon: 'appstore'" nzTheme="outline"></i></td>
+        <td>{{ item.path }}</td>
+        <td>{{ item.sourceUrl }}</td>
+        <td>
+          <a nz-icon type="edit" title="{{'frontend.edit' | translate}}" (click)="edit(item)"></a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a *ngIf="!item.button" nz-icon type="plus" title="插入子菜单" (click)="insert(item)"></a>
+          <nz-divider *ngIf="!item.button" nzType="vertical"></nz-divider>
+          <a *ngIf="!item.children" nz-icon type="delete" title="{{'frontend.delete' | translate}}" nz-popconfirm
+             nzTitle="{{'frontend.confirmDelete' | translate}}" (nzOnConfirm)="remove(item)"></a>
+        </td>
+      </tr>
+    </ng-container>
+  </ng-container>
+  </tbody>
+</nz-table>

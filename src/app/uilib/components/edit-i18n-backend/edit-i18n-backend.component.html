@@ -1,0 +1,37 @@
+<button (click)="openModal($event);" [nzSize]="'small'" nz-button
+        nzType="primary">{{'frontend.i18n' | translate}}</button>
+
+<nz-modal [(nzVisible)]="isModalVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter"
+          (nzOnCancel)="handleCancel()">
+  <ng-template #modalTitle>
+    {{'frontend.i18n' | translate}}:&nbsp;{{dictKey}}&nbsp;
+  </ng-template>
+
+  <ng-template #modalContent>
+    <div>
+      <form nz-form [formGroup]="tmpForm">
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired
+                         nzFor="chinese">{{'frontend.chinese' | translate}}</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input nz-input id="chinese" formControlName="chinese"/>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired
+                         nzFor="english">{{'frontend.english' | translate}}</nz-form-label>
+          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="'321'">
+            <input nz-input id="english" formControlName="english"/>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+    <!-- <p>Modal Content</p> -->
+  </ng-template>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="primary" [disabled]="!tmpForm.valid" (click)="handleOk()"
+            [nzLoading]="isConfirmLoading">{{'frontend.save' | translate}}</button>
+    <button nz-button nzType="default" (click)="handleCancel()">{{'frontend.back' | translate}}</button>
+  </ng-template>
+</nz-modal>

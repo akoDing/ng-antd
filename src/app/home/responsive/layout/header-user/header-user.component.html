@@ -1,0 +1,16 @@
+<div nz-dropdown [nzPlacement]="'bottomRight'" [nzTrigger]="'click'" [nzDropdownMenu]="menu">
+    <div class="item d-flex align-items-center" [class.header-user-collapsed]="setting.layout.sideCollapsed">
+        <span class="header-username">{{userName}}</span>
+        <i nz-icon [type]="'user'" class="header-icon"></i>
+    </div>
+</div>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+        <li nz-menu-item (click)="openUserInfoModal()">
+            <i nz-icon nzType="idcard" nzTheme="outline"></i>{{'frontend.profile' | translate}}
+        </li>
+        <li nz-menu-item (click)="logout()">
+            <i nz-icon type="logout" theme="outline"></i>{{'frontend.logout' | translate}}
+        </li>
+    </ul>
+</nz-dropdown-menu>

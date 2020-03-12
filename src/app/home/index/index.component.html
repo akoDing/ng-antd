@@ -1,0 +1,35 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="code">Code</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="code" id="code" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="name">Name</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input
+        nz-input
+        id="name"
+        formControlName="name"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="ceform">CE Form</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <file-upload formControlName="ceform" id="ceform" fileNameType="ceform" [limit]="1"></file-upload>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="financemail">Finance Mail</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <file-upload formControlName="financemail" id="financemail"></file-upload>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">提交</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

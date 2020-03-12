@@ -1,0 +1,10 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template #processInstanceList>
+  <app-processinstancelist></app-processinstancelist>
+</ng-template>
+<ng-template #processTemplateList>
+  <app-processtemplatelist></app-processtemplatelist>
+</ng-template>
+<ng-template #taskList>
+  <app-tasklist></app-tasklist>
+</ng-template>

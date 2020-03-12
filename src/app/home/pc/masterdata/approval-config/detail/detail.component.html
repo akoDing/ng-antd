@@ -1,0 +1,55 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm($event, validateForm.value)">
+    <div nz-row nzType="flex" nzJustify="space-between">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>{{'frontend.thApprovalName' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12" nzErrorTip="{{'frontend.requiredText' | translate}}">
+                    <input nz-input formControlName="approvalName" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="space_between">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>{{'frontend.thApprovalType' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12" nzErrorTip="{{'frontend.requiredText' | translate}}">
+                    <nz-select style="width:100%" formControlName="approvalType"  nzPlaceHolder="{{'frontend.pleasechoose' | translate}}">
+                    <nz-option *ngFor="let o of approvalTypeList" nzLabel="{{'backend.'+o.name | translate}}" [nzValue]="o.name" [nzDisabled]="o.disabled"> </nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7" nzRequired>{{'frontend.thNeedUpload' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12" nzErrorTip="{{'frontend.requiredText' | translate}}">
+                    <nz-select style="width:100%" formControlName="needUpload" nzPlaceHolder="{{'frontend.pleasechoose' | translate}}">
+                        <nz-option *ngFor="let o of needUploadList" nzLabel="{{'backend.'+o.name | translate}}"
+                            [nzValue]="o.name"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row nzType="flex" nzJustify="space_between">
+        <div nz-col nzSpan="12">
+            <nz-form-item>
+                <nz-form-label [nzSpan]="7">{{'frontend.thActive' | translate}}</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                    <nz-switch formControlName="active" nzCheckedChildren="1" nzUnCheckedChildren="0"></nz-switch>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+    <div nz-row style="text-align: center;margin-top: 18px;">
+        <nz-form-item>
+            <nz-form-control>
+                <button nz-button nzType="primary"
+                    [disabled]="!validateForm.valid">{{'frontend.save' | translate}}</button>
+                <button nz-button style="margin-left: 12px;"
+                    (click)="closeTabWithoutSave($event)">{{'frontend.back' | translate}}</button>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+</form>

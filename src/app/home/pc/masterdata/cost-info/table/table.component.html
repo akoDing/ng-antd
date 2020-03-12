@@ -1,0 +1,21 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+  <form [formGroup]="searchForm" nz-form>
+    <div [nzGutter]="16" nz-form-item nz-row>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <input formControlName="name_like" nz-input placeholder="{{'frontend.cost.name' | translate}}">
+      </div>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <button (click)="onSearch()" [nzLoading]="costTableInfo.loading" [nzType]="'primary'"
+                nz-button>{{'frontend.search' | translate}}</button>
+        <button (click)="onReset()" [nzType]="'primary'" nz-button
+                style=" margin-left:16px;">{{'frontend.reset' | translate}}</button>
+      </div>
+    </div>
+  </form>
+
+  <div nz-row>
+    <button (click)="create($event)" [nzLoading]="costTableInfo.loading" [nzType]="'primary'" nz-button
+            style="margin-top: 16px;">{{'frontend.create' | translate}}</button>
+  </div>
+</div>
+<app-list-table [tableInfo]="costTableInfo" (pageChange)="onChangePage($event)"></app-list-table>

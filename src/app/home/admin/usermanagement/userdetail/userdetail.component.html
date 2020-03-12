@@ -1,0 +1,111 @@
+<nz-card nzTitle="基本信息">
+  <div nz-row>
+    <div [nzSpan]="21" nz-col>
+      <form (ngSubmit)="submitForm($event)" [formGroup]="validateForm" nz-form>
+        <div nz-row nzJustify="space_between" nzType="flex">
+          <div [nzSpan]="12" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7" nzRequired>用户名</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <input formControlName="username" nz-input/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="12" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">姓名</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <input formControlName="lastname" nz-input/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row nzJustify="space_between" nzType="flex">
+          <div [nzSpan]="12" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">电话</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <input formControlName="phoneNumber" nz-input/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div [nzSpan]="12" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">邮箱</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <input formControlName="mail" nz-input/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row nzJustify="space_between" nzType="flex">
+          <div [nzSpan]="12" nz-col>
+            <nz-form-item>
+              <nz-form-label [nzSpan]="7">角色</nz-form-label>
+              <nz-form-control [nzSpan]="12">
+                <nz-select
+                  (nzOnSearch)="searchRole($event)"
+                  [nzMaxTagPlaceholder]="tagPlaceHolder"
+                  formControlName="roles"
+                  id="roles"
+                  nzMode="multiple"
+                  nzPlaceHolder="Please select"
+                  nzServerSearch
+                  nzShowSearch
+                  style="width: 100%"
+                >
+                  <nz-option *ngFor="let role of selectRoles" [nzLabel]="role.name | translate"
+                             [nzValue]="role"></nz-option>
+                </nz-select>
+                <ng-template #tagPlaceHolder let-selectRoles> and {{ selectRoles.length }} more selected</ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row style="text-align: center;margin-top: 18px;">
+          <nz-form-item>
+            <nz-form-control>
+              <button [disabled]="!validateForm.valid" nz-button
+                      nzType="primary">{{'frontend.save' | translate}}</button>
+              <button (click)="closeTabWithoutSave($event)" nz-button
+                      style="margin-left: 12px;">{{'frontend.back' | translate}}</button>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </form>
+    </div>
+    <div [nzSpan]="3" nz-col>
+      <div class="clearfix">
+        <nz-upload
+          [(nzFileList)]="fileList"
+          [nzBeforeUpload]="beforeUpload"
+          [nzPreview]="handlePreview"
+          [nzShowButton]="fileList.length < 1 && !readonly"
+          [nzShowUploadList]="showUploadList"
+          nzListType="picture-card"
+        >
+          <i nz-icon nzType="plus"></i>
+          <div class="ant-upload-text">上传头像</div>
+        </nz-upload>
+        <nz-modal
+          (nzOnCancel)="previewVisible = false"
+          [nzContent]="modalContent"
+          [nzFooter]="null"
+          [nzVisible]="previewVisible"
+        >
+          <ng-template #modalContent>
+            <img [ngStyle]="{ width: '100%' }" [src]="previewImage"/>
+          </ng-template>
+        </nz-modal>
+      </div>
+    </div>
+  </div>
+</nz-card>
+<nz-card nzTitle="用户信息" style="margin-top: 20px">
+  <nz-descriptions nzBordered nzSize="small" nzLayout="vertical">
+    <nz-descriptions-item *ngFor="let item of userDetailConfig" [nzTitle]="item.title | translate" [nzSpan]="item.span">
+      {{user.detail ? user.detail[item.key] : null}}
+    </nz-descriptions-item>
+  </nz-descriptions>
+</nz-card>
+

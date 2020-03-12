@@ -1,0 +1,23 @@
+<div style="padding:10px 10px; margin-bottom:10px;">
+  <form [formGroup]="searchForm" nz-form>
+    <div [nzGutter]="16" nz-form-item nz-row>
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <enum-select formControlName="product" parentName="product_type"></enum-select>
+      </div>
+
+      <div [nzSm]="4" [nzXs]="24" nz-col nz-form-label>
+        <button (click)="onSearch($event)" [nzLoading]="productTableInfo.loading" [nzType]="'primary'"
+                nz-button>{{'frontend.search' | translate}}</button>
+        <button (click)="onReset($event)" [nzType]="'primary'" nz-button
+                style=" margin-left:16px;">{{'frontend.reset' | translate}}</button>
+      </div>
+    </div>
+  </form>
+  <div nz-row>
+    <button nz-button style="margin-top:16px;" [nzType]="'primary'"
+            (click)="create($event)">{{'frontend.create' | translate}}</button>
+  </div>
+</div>
+<app-list-table [tableInfo]="productTableInfo" (pageChange)="onChangePage($event)"></app-list-table>
+
+

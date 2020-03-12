@@ -1,0 +1,7 @@
+<app-tab-router [tabs]="tabs" [index]="index" (onCloseTab)="closeTab($event)"></app-tab-router>
+<ng-template let-menu="menu" #menuInfo>
+  <app-menuinfo [menu]="menu" (afterSave)="closeTabAndReload(index, $event)"></app-menuinfo>
+</ng-template>
+<ng-template #menuTree>
+  <app-menutree [reload]="reload" (onEdit)="editMenu($event)" (onInsert)="insertMenu($event)" (onDelete)="deleteMenu($event)" (onCreate)="createMenu()"></app-menutree>
+</ng-template>

@@ -1,0 +1,12 @@
+<nz-upload [(nzFileList)]="value"
+           [nzBeforeUpload]="beforeUpload"
+           [nzDisabled]="disabled"
+           [nzFileType]="fileType"
+           [nzShowButton]="!value || value.length < limit || limit == 0"
+           [nzRemove]="removeFile"
+  >
+  <button (click)="clickButton($event)" nz-button><i nz-icon nzType="upload"></i><span>{{'frontend.selectFile' | translate}}</span></button>
+</nz-upload>
+<nz-upload [nzFileList]="historyFileList" [nzShowButton]="false"
+           [nzShowUploadList]="{showRemoveIcon: limit == 0 || limit > 1}">
+</nz-upload>

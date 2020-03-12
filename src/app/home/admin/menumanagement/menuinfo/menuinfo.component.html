@@ -1,0 +1,70 @@
+<form (ngSubmit)="submitForm($event, validateForm.value)" [formGroup]="validateForm" nz-form>
+  <div nz-row nzJustify="space_between" nzType="flex">
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>名称</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <i18n-editor formControlName="global"></i18n-editor>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">图标</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <app-icon-picker formControlName="icon"></app-icon-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row nzJustify="space_between" nzType="flex">
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">页面路径</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input formControlName="path" nz-input placeholder="页面路径"/>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">资源路径</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input formControlName="sourceUrl" nz-input placeholder="资源路径"/>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row nzJustify="space_between" nzType="flex">
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">是否按钮</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <nz-switch formControlName="button"></nz-switch>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div [nzSpan]="12" nz-col>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">排序</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input formControlName="indexof" min="0" nz-input type="number"/>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row style="text-align: center;margin-top: 18px;">
+    <nz-form-item>
+      <nz-form-control>
+        <button [disabled]="!validateForm.valid" nz-button nzType="primary">{{'frontend.save' | translate}}</button>
+        <button (click)="closeTabWithoutSave($event)" nz-button
+                style="margin-left: 12px;">{{'frontend.back' | translate}}</button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</form>
+
+
+

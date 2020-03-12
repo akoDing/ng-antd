@@ -1,0 +1,151 @@
+<form (ngSubmit)="submitForm($event)" [formGroup]="validateForm" nz-form nzLayout="vertical">
+  <nz-card [nzType]="'inner'" nzTitle="{{ 'frontend.funnel.basic_info' | translate }}">
+    <div [nzGutter]="16" nz-row>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label nzRequired>{{ 'frontend.funnel.opportunityNo' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input formControlName="opportunityNo" nz-input/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel.solution' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input formControlName="solution" nz-input/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel.customerName' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input formControlName="customerName" nz-input/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div [nzGutter]="16" nz-row>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel.owner' | translate }}</nz-form-label>
+          <nz-form-control>
+            <sys-user-select formControlName="owner" key="id">
+            </sys-user-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div [nzSpan]="8" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel._12nc' | translate }}</nz-form-label>
+          <nz-form-control>
+            <input formControlName="_12nc" nz-input/>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div [nzGutter]="16" nz-row>
+      <div [nzSpan]="16" nz-col>
+        <nz-form-item>
+          <nz-form-label>{{ 'frontend.funnel.requirement' | translate }}</nz-form-label>
+          <nz-form-control>
+            <textarea formControlName="requirement" nz-input rows="4"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </nz-card>
+  <div style="margin-top: 18px">
+    <nz-card *ngIf="funnelInfo.status && funnelInfo.status != 'ONWORKING'" [nzType]="'inner'"
+             nzTitle="{{ 'frontend.funnel.service_info' | translate }}">
+      <div [nzGutter]="16" nz-row>
+        <div [nzSpan]="8" nz-col>
+          <nz-form-item>
+            <nz-form-label nzRequired>{{ 'frontend.funnel.serviceType' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input formControlName="serviceType" nz-input/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div [nzSpan]="8" nz-col>
+          <nz-form-item>
+            <nz-form-label>{{ 'frontend.funnel.serviceLine' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input formControlName="serviceLine" nz-input/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div [nzSpan]="8" nz-col>
+          <nz-form-item>
+            <nz-form-label>{{ 'frontend.funnel.servicePackage' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input formControlName="servicePackage" nz-input/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div [nzGutter]="16" nz-row>
+        <div [nzSpan]="8" nz-col>
+          <nz-form-item>
+            <nz-form-label nzRequired>{{ 'frontend.funnel.serviceName' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input formControlName="serviceName" nz-input/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <nz-divider nzOrientation="left" nzText="{{ 'frontend.funnel.online_offer' | translate }}"></nz-divider>
+
+      <div [nzGutter]="16" nz-row>
+        <div [nzSpan]="8" nz-col>
+          <nz-form-item>
+            <nz-form-label nzRequired>{{ 'frontend.funnel.price_cny' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input formControlName="price_cny" nz-input/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div [nzSpan]="8" nz-col>
+          <nz-form-item>
+            <nz-form-label>{{ 'frontend.funnel.price_notax' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input formControlName="price_notax" nz-input/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div [nzSpan]="8" nz-col>
+          <nz-form-item>
+            <nz-form-label>{{ 'frontend.funnel.price_aftertax' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input formControlName="price_aftertax" nz-input/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div [nzGutter]="16" nz-row>
+        <div [nzSpan]="8" nz-col>
+          <nz-form-item>
+            <nz-form-label nzRequired>{{ 'frontend.funnel.price_usd' | translate }}</nz-form-label>
+            <nz-form-control>
+              <input formControlName="price_usd" nz-input/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </nz-card>
+  </div>
+
+  <div nz-row style="text-align: center;margin-top: 18px;">
+    <nz-form-item>
+      <nz-form-control>
+        <button [disabled]="!validateForm.valid" nz-button
+                nzType="primary">{{'frontend.save' | translate}}</button>
+        <button (click)="closeTabWithoutSave($event)" nz-button
+                style="margin-left: 12px;">{{'frontend.back' | translate}}</button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</form>
+
